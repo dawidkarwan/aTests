@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+import allure
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 
@@ -21,6 +22,7 @@ class LoggingPage:
     def __init__(self, driver: WebDriver):
         self.driver = driver
 
+    @allure.step("Zaloguj się do aplikacji")
     def log_in(self):
         self.driver.find_element(*LoggingLocators.INPUT_LOGIN).send_keys(LoggingData.login)
         self.driver.find_element(*LoggingLocators.INPUT_PASSWORD).send_keys(LoggingData.password)
