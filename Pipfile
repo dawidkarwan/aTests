@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 allure-pytest = "*"
+assertpy = "*"
 pytest = "*"
 selenium = "4.4.3"
 
