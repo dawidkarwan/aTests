@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 
 import allure
-from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
+from src.commons.page_base import BasePage
 
 
 class LoggingLocators:
@@ -17,10 +17,7 @@ class LoggingData:
     password: str = "sumXQQ72$L"
 
 
-class LoggingPage:
-
-    def __init__(self, driver: WebDriver):
-        self.driver = driver
+class LoggingPage(BasePage):
 
     @allure.step("Zaloguj się do aplikacji")
     def log_in(self):
