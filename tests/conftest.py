@@ -17,7 +17,7 @@ def url_test_arena() -> str:
     return "http://demo.testarena.pl/"
 
 
-@pytest.fixture()
+@pytest.fixture(autouse=True)
 def log_in_to_test_arena(driver, url_test_arena):
     driver.get(url_test_arena)
     LoggingPage(driver).log_in()
