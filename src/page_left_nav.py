@@ -9,7 +9,7 @@ class LeftNavLocators:
     MAIN_PAGE = (By.ID, "header_logo")
 
     @staticmethod
-    def get_tab_locator(name: str):
+    def get_tab_locator(name: str) -> tuple:
         return By.XPATH, f'//ul[@class="menu"]/li[.="{name}"]'
 
 
