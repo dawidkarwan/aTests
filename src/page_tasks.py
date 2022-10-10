@@ -20,13 +20,14 @@ class TasksLocators:
     def priority_option(priority: str) -> tuple:
         return By.XPATH, f'//select[@id="priority"]/option[.="{priority}"]'
 
-    @dataclass
-    class PageTasksDataClass:
-        title: str
-        description: str
-        env: str
-        version: str
-        due_date: str
-        assignee_to: str
-        tag: str
-        priority: str
+
+@dataclass
+class PageTasksDataClass:
+    title: str
+    description: str
+    env: str
+    version: str
+    due_date: str
+    assignee_to: str
+    tag: str
+    priority: str
