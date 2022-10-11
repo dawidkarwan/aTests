@@ -10,7 +10,7 @@ class LeftNavLocators:
 
     @staticmethod
     def get_tab_locator(name: str) -> tuple:
-        return By.XPATH, f'//ul[@class="menu"]/li[.="{name}"]'
+        return By.XPATH, f'//ul[@class="menu"]//a[text()="{name}"]'
 
 
 class LeftNavData(Enum):

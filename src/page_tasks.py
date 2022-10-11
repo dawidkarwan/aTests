@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 
 class TasksLocators:
     TITLE = (By.XPATH, '//h1[@class="content_title"]')
-    BUTTON_ADD_TASK = (By.XPATH, '//a[@class="button_link"][.="Dodaj zadanie"]')
+    BUTTON_ADD_TASK = (By.XPATH, '//a[@class="button_link"][text()="Dodaj zadanie"]')
     INPUT_TITLE = (By.ID, 'title')
     INPUT_DESCRIPTION = (By.ID, 'description')
     INPUT_ENV = (By.ID, 'token-input-environments')
