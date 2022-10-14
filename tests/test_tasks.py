@@ -15,5 +15,5 @@ class TestTasks:
 
     @pytest.mark.parametrize('params', get_test_data('tasks', TasksDataClass))
     def test_add_task(self, params: TasksDataClass):
-        self.left_nav.go_to_tab(LeftNavData.TASK.value)
+        self.left_nav.go_to_tab(LeftNavData.TASK)
         self.tasks.fill_new_task_fields(params)

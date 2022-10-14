@@ -1,8 +1,7 @@
-from enum import Enum
-
 from selenium.webdriver.common.by import By
 
 from src.commons.page_base import BasePage
+from src.utils.str_enum import StrEnum
 
 
 class LeftNavLocators:
@@ -13,7 +12,7 @@ class LeftNavLocators:
         return By.XPATH, f'//ul[@class="menu"]//a[text()="{name}"]'
 
 
-class LeftNavData(Enum):
+class LeftNavData(StrEnum):
     PROJECT = "Projekt"
     RELEASES = "Wydania"
     ENV = "Środowiska"
@@ -28,7 +27,7 @@ class LeftNavData(Enum):
 class LeftNavPage(BasePage):
 
     def go_to_tab(self, tab_name: str):
-        if [name for name in LeftNavData if name.value == tab_name]:
+        if [name for name in LeftNavData if name == tab_name]:
             self.driver.find_element(*LeftNavLocators.get_tab_locator(tab_name)).click()
         else:
             raise NotImplementedError(f"{tab_name} not added")
