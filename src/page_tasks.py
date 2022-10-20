@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 
 from selenium.webdriver.common.by import By
-
 from src.commons.page_base import BasePage
 
 
@@ -11,6 +10,7 @@ class TasksLocators:
     INPUT_TITLE = (By.ID, 'title')
     INPUT_DESCRIPTION = (By.ID, 'description')
     INPUT_ENV = (By.ID, 'token-input-environments')
+    DDL_ENV = (By.XPATH, '//div[@class="token-input-dropdown-facebook"]//li[.="Test Environment1112597272424036811"]')
     INPUT_VERSION = (By.ID, 'token-input-versions')
     INPUT_DUE_DATE = (By.ID, 'dueDate')
     INPUT_ASSIGNEE_TO = (By.ID, 'assigneeName')
@@ -42,6 +42,8 @@ class TasksPage(BasePage):
         self.driver.find_element(*TasksLocators.INPUT_TITLE).send_keys(params.title)
         self.driver.find_element(*TasksLocators.INPUT_DESCRIPTION).send_keys(params.description)
         self.driver.find_element(*TasksLocators.INPUT_ENV).send_keys(params.env)
+        self.common_actions.wait_for_ddl()
+        self.driver.find_element(*TasksLocators.DDL_ENV).click()
         self.driver.find_element(*TasksLocators.INPUT_VERSION).send_keys(params.version)
         self.driver.find_element(*TasksLocators.DDL_PRIORITY).click()
         self.driver.find_element(*TasksLocators.priority_option(params.priority)).click()

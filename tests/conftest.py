@@ -1,6 +1,7 @@
 import pytest
 from selenium.webdriver import Chrome
 from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.support.ui import WebDriverWait
 
 from src.page_logging import LoggingPage
 
@@ -10,6 +11,11 @@ def driver() -> WebDriver:
     driver = Chrome()
     yield driver
     driver.quit()
+
+
+@pytest.fixture
+def waiter(driver) -> WebDriverWait:
+    return WebDriverWait(driver, 15)
 
 
 @pytest.fixture(scope="session")
