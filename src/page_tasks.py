@@ -7,7 +7,6 @@ from src.commons.page_base import BasePage
 
 
 class TasksLocators:
-    TITLE = (By.XPATH, '//h1[@class="content_title"]')
     BUTTON_ADD_TASK = (By.XPATH, '//a[@class="button_link"][text()="Dodaj zadanie"]')
     INPUT_TITLE = (By.ID, 'title')
     INPUT_DESCRIPTION = (By.ID, 'description')
