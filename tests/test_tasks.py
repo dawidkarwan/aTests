@@ -8,6 +8,7 @@ from src.page_tasks import TasksDataClass, TasksPage
 from src.utils.get_test_data import get_test_data
 
 
+@pytest.mark.e2e
 class TestTasks:
 
     @pytest.fixture(autouse=True)
