@@ -1,5 +1,5 @@
 # aTests
-Automatic tests project to control quality of webapp http://testarena.pl/demo
+Automatic tests project to control quality of web app http://testarena.pl/demo
 based on
 * Python
 * Selenium
@@ -25,7 +25,7 @@ dacite = "*"
 ```
 
 ### Example of use
-Run tests by marker expression: `pytest -m 2e2`
+Run tests by marker expression: `pytest -m e2e`
 
 ### Author and maintainer
 Dawid Karwan
