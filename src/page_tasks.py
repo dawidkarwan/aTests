@@ -69,7 +69,7 @@ class TasksPage(BasePage):
         self.driver.find_element(*TasksLocators.priority_option(params.priority)).click()
         self.driver.find_element(*TasksLocators.INPUT_DUE_DATE).send_keys(params.due_date + Keys.TAB)
         self.driver.find_element(*TasksLocators.INPUT_ASSIGNEE_TO).send_keys(params.assignee_to)
-        self.wait.until(EC.visibility_of_element_located(TasksLocators.DDL_ASSIGNEE_TO))
+        self.wait().until(EC.visibility_of_element_located(TasksLocators.DDL_ASSIGNEE_TO))
         self.driver.find_element(*TasksLocators.DDL_ASSIGNEE_TO).click()
         self.driver.find_element(*TasksLocators.INPUT_TAG).send_keys(params.tag)
         self.common_actions.wait_for_ddl()
