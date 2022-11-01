@@ -4,6 +4,7 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 
 from src.page_logging import LoggingPage
+from src.page_header import HeaderPage
 
 
 @pytest.fixture
@@ -27,3 +28,11 @@ def url_test_arena() -> str:
 def log_in_to_test_arena(driver, url_test_arena):
     driver.get(url_test_arena)
     LoggingPage(driver).log_in()
+
+
+@pytest.fixture
+def set_project(driver):
+    project = 'PROJEKT_DK'
+    header = HeaderPage(driver)
+    if header.get_active_project_name() != project:
+        header.change_project(project)

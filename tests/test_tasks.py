@@ -13,7 +13,7 @@ from src.utils.get_test_data import get_test_data
 class TestTasks:
 
     @pytest.fixture(autouse=True)
-    def setup(self, driver, waiter):
+    def setup(self, driver, waiter, set_project):
         self.driver = driver
         self.waiter = waiter
         self.left_nav = LeftNavPage(driver)
@@ -30,4 +30,3 @@ class TestTasks:
     def test_cancel_task(self):
         self.tasks.cancel_task()
         assert_that(CommonActions(self.driver).get_page_title()).is_equal_to("Zadania")
-
