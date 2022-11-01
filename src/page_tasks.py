@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+import allure
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -7,7 +8,6 @@ from src.commons.page_base import BasePage
 
 
 class TasksLocators:
-    TITLE = (By.XPATH, '//h1[@class="content_title"]')
     BUTTON_ADD_TASK = (By.XPATH, '//a[@class="button_link"][text()="Dodaj zadanie"]')
     INPUT_TITLE = (By.ID, 'title')
     INPUT_DESCRIPTION = (By.ID, 'description')
@@ -19,6 +19,7 @@ class TasksLocators:
     INPUT_TAG = (By.ID, 'token-input-tags')
     BUTTON_SAVE = (By.ID, 'save')
     DDL_PRIORITY = (By.ID, 'priority')
+    BUTTON_CANCEL = (By.XPATH, '//span[@class="j_cancel_button"]//a[text()="Anuluj"]')
 
     @staticmethod
     def priority_option(priority: str) -> tuple[str, str]:
@@ -43,8 +44,19 @@ class TasksDataClass:
 
 class TasksPage(BasePage):
 
-    def fill_new_task_fields(self, params: TasksDataClass):
-        self.driver.find_element(*TasksLocators.BUTTON_ADD_TASK).click()
+    @allure.step("Dodaj nowe zadanie")
+    def add_new_task(self, params: TasksDataClass):
+        self._click_add_task()
+        self._fill_new_task_fields(params)
+        self._click_save_task()
+
+    @allure.step("Anuluj zadanie")
+    def cancel_task(self):
+        self._click_add_task()
+        self._click_cancel_app()
+
+    @allure.step("Uzupełnij pola w nowym zadaniu")
+    def _fill_new_task_fields(self, params: TasksDataClass):
         self.driver.find_element(*TasksLocators.INPUT_TITLE).send_keys(params.title)
         self.driver.find_element(*TasksLocators.INPUT_DESCRIPTION).send_keys(params.description)
         self.driver.find_element(*TasksLocators.INPUT_ENV).send_keys(params.env)
@@ -57,9 +69,20 @@ class TasksPage(BasePage):
         self.driver.find_element(*TasksLocators.priority_option(params.priority)).click()
         self.driver.find_element(*TasksLocators.INPUT_DUE_DATE).send_keys(params.due_date + Keys.TAB)
         self.driver.find_element(*TasksLocators.INPUT_ASSIGNEE_TO).send_keys(params.assignee_to)
-        self.wait.until(EC.visibility_of_element_located(TasksLocators.DDL_ASSIGNEE_TO))
+        self.wait().until(EC.visibility_of_element_located(TasksLocators.DDL_ASSIGNEE_TO))
         self.driver.find_element(*TasksLocators.DDL_ASSIGNEE_TO).click()
         self.driver.find_element(*TasksLocators.INPUT_TAG).send_keys(params.tag)
         self.common_actions.wait_for_ddl()
         self.driver.find_element(*TasksLocators.dynamic_ddl(params.tag)).click()
+
+    @allure.step("Kliknij dodaj zadanie")
+    def _click_add_task(self):
+        self.driver.find_element(*TasksLocators.BUTTON_ADD_TASK).click()
+
+    @allure.step("Kliknij zapisz")
+    def _click_save_task(self):
         self.driver.find_element(*TasksLocators.BUTTON_SAVE).click()
+
+    @allure.step("Kliknij anuluj")
+    def _click_cancel_app(self):
+        self.driver.find_element(*TasksLocators.BUTTON_CANCEL).click()

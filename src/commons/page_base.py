@@ -9,9 +9,8 @@ class BasePage:
     def __init__(self, driver: WebDriver):
         self.driver = driver
 
-    @property
-    def wait(self) -> WebDriverWait:
-        return WebDriverWait(self.driver, 15)
+    def wait(self, timeout: int = 15) -> WebDriverWait:
+        return WebDriverWait(self.driver, timeout)
 
     @property
     def common_actions(self) -> CommonActions:
