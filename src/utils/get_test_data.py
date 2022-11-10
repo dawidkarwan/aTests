@@ -1,25 +1,24 @@
 import json
 import logging
-from typing import Any
-
+from typing import TypeVar, Type
+from pathlib import PurePath
 from dacite import from_dict
 
-BASE_PATH = 'C:\\PyProjects\\aTests\\files\\'
-SUFFIX_SUITE_NAME = '_test_data.json'
+ROOT = PurePath(__file__).parent.parent.parent
+BASE_PATH = ROOT / 'data'
+
+T = TypeVar['T']
 
 
-def load_json(file_path: str) -> dict:
+def load_json(file_path: PurePath | str) -> dict:
     with open(file_path, encoding='utf-8') as json_file:
         return json.load(json_file)
 
 
-def get_test_data(suite_name: str, data_class) -> list[Any]:
-    file_path = BASE_PATH + suite_name + SUFFIX_SUITE_NAME
-    test_data = []
+def get_test_data(suite_name: str, data_class: Type[T]) -> list[T]:
+    file_path = BASE_PATH / f'{suite_name}_test_data.json'
     try:
-        for data in load_json(file_path):
-            test_data.append(from_dict(data_class=data_class, data=data))
-        return test_data
+        return [from_dict(data_class=data_class, data=data) for data in load_json(file_path)]
     except FileNotFoundError:
-        logging.error(f'no file for path: {file_path}')
+        logging.warning(f'no file for path: {file_path}')
         return []
