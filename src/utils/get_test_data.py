@@ -7,7 +7,7 @@ from dacite import from_dict
 ROOT = PurePath(__file__).parent.parent.parent
 BASE_PATH = ROOT / 'data'
 
-T = TypeVar['T']
+T = TypeVar('T')
 
 
 def load_json(file_path: PurePath | str) -> dict:
