@@ -27,7 +27,7 @@ dacite = "*"
 
 ### Example of use
 ###### Run tests by marker expression: <br>
-`pytest -m commons` <br>
+`pytest -m common` <br>
 ###### Run tests and generate report: <br>
 `pytest --alluredir="reports_dir_path" -m e2e` <br>
 `allure serve reports_dir_path`
