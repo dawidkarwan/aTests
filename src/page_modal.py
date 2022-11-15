@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 
 from src.commons.page_base import BasePage
@@ -9,5 +10,6 @@ class ModalLocators:
 
 class ModalPage(BasePage):
 
+    @allure.step("Pobierz komunikat informacyjny")
     def get_info_msg(self) -> str:
         return self.driver.find_element(*ModalLocators.INFO_MSG).text

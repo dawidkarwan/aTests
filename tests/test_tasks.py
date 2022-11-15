@@ -1,3 +1,4 @@
+import allure
 import pytest
 from assertpy import assert_that
 from selenium.webdriver.support import expected_conditions as EC
@@ -21,12 +22,17 @@ class TestTasks:
         self.modal = ModalPage(driver)
         self.left_nav.go_to_tab(LeftNavData.TASK)
 
+    @allure.title("Dodanie zadania")
+    @allure.link("https://github.com/dawidkarwan/aTests/wiki/1.-Dodanie-nowego-zadania")
     @pytest.mark.parametrize('params', get_test_data('tasks', TasksDataClass))
     def test_add_task(self, params: TasksDataClass):
         self.tasks.add_new_task(params)
         self.waiter.until(EC.visibility_of_element_located(ModalLocators.INFO_MSG))
-        assert_that(self.modal.get_info_msg()).is_equal_to('Zadanie zostało dodane.')
+        with allure.step("Sprawdź komunikat informacyjny"):
+            assert_that(self.modal.get_info_msg()).is_equal_to('Zadanie zostało dodane.')
 
+    @allure.title("Anulowanie zadania")
     def test_cancel_task(self):
         self.tasks.cancel_task()
-        assert_that(CommonActions(self.driver).get_page_title()).is_equal_to("Zadania")
+        with allure.step("Sprawdź tytuł strony"):
+            assert_that(CommonActions(self.driver).get_page_title()).is_equal_to("Zadania")
