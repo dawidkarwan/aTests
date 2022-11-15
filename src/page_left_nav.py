@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 
 from src.commons.page_base import BasePage
@@ -26,8 +27,10 @@ class LeftNavData(StrEnum):
 
 class LeftNavPage(BasePage):
 
+    @allure.step("Przejdź do zakładki")
     def go_to_tab(self, tab_name: LeftNavData):
         self.driver.find_element(*LeftNavLocators.get_tab_locator(tab_name)).click()
 
+    @allure.step("Przejdź do strony głównej")
     def go_to_main_page(self):
         self.driver.find_element(*LeftNavLocators.MAIN_PAGE).click()
