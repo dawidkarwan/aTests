@@ -5,7 +5,8 @@ from pathlib import PurePath
 from dacite import from_dict
 
 ROOT = PurePath(__file__).parent.parent.parent
-BASE_PATH = ROOT / 'data'
+TEST_PATH = ROOT / 'tests'
+TEST_DATA_PATH = TEST_PATH / 'data'
 
 T = TypeVar('T')
 
@@ -16,7 +17,7 @@ def load_json(file_path: PurePath | str) -> dict:
 
 
 def get_test_data(suite_name: str, data_class: Type[T]) -> list[T]:
-    file_path = BASE_PATH / f'{suite_name}_test_data.json'
+    file_path = TEST_DATA_PATH / f'{suite_name}_test_data.json'
     try:
         return [from_dict(data_class=data_class, data=data) for data in load_json(file_path)]
     except FileNotFoundError:

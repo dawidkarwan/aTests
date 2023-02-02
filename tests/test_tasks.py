@@ -3,10 +3,10 @@ import pytest
 from assertpy import assert_that
 from selenium.webdriver.support import expected_conditions as EC
 
-from src.commons.common_actions import CommonActions
-from src.page_left_nav import LeftNavPage, LeftNavData
-from src.page_modal import ModalPage, ModalLocators
-from src.page_tasks import TasksDataClass, TasksPage
+from src.pom.commons.common_actions import CommonActions
+from src.pom.page_left_nav import LeftNavPage, LeftNavData
+from src.pom.page_modal import ModalPage, ModalLocators
+from src.pom.page_tasks import TasksDataClass, TasksPage
 from src.utils.get_test_data import get_test_data
 
 

@@ -3,7 +3,7 @@ import pytest
 
 from assertpy import assert_that
 
-from src.page_header import HeaderLocators
+from src.pom.page_header import HeaderLocators
 
 
 @pytest.mark.common

@@ -2,9 +2,9 @@ import allure
 import pytest
 from assertpy import assert_that
 
-from src.commons.common_actions import CommonActions
-from src.page_left_nav import LeftNavPage
-from src.page_left_nav import LeftNavData as tabs
+from src.pom.commons.common_actions import CommonActions
+from src.pom.page_left_nav import LeftNavPage
+from src.pom.page_left_nav import LeftNavData as tabs
 
 
 @pytest.mark.common

@@ -3,8 +3,8 @@ from selenium.webdriver import Chrome
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 
-from src.page_logging import LoggingPage
-from src.page_header import HeaderPage
+from src.pom.page_logging import LoggingPage
+from src.pom.page_header import HeaderPage
 
 
 @pytest.fixture
