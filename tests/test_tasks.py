@@ -23,7 +23,7 @@ class TestTasks:
         self.left_nav.go_to_tab(LeftNavData.TASK)
 
     @allure.title("Dodanie zadania")
-    @allure.link("https://github.com/dawidkarwan/aTests/wiki/1.-Dodanie-nowego-zadania")
+    @allure.testcase("https://github.com/dawidkarwan/aTests/wiki/1.-Dodanie-nowego-zadania")
     @pytest.mark.parametrize('params', get_test_data('tasks', TasksDataClass))
     def test_add_task(self, params: TasksDataClass):
         self.tasks.add_new_task(params)
