@@ -1,17 +1,19 @@
+from typing import Generator
+
 import pytest
 from selenium.webdriver import Chrome
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 
-from src.page_logging import LoggingPage
-from src.page_header import HeaderPage
+from src.pom.page_logging import LoggingPage
+from src.pom.page_header import HeaderPage
 
 
 @pytest.fixture
-def driver() -> WebDriver:
-    driver = Chrome()
-    yield driver
-    driver.quit()
+def driver() -> Generator[WebDriver, None, None]:
+    this_driver = Chrome()
+    yield this_driver
+    this_driver.quit()
 
 
 @pytest.fixture

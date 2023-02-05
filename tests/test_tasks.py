@@ -3,10 +3,10 @@ import pytest
 from assertpy import assert_that
 from selenium.webdriver.support import expected_conditions as EC
 
-from src.commons.common_actions import CommonActions
-from src.page_left_nav import LeftNavPage, LeftNavData
-from src.page_modal import ModalPage, ModalLocators
-from src.page_tasks import TasksDataClass, TasksPage
+from src.pom.commons.common_actions import CommonActions
+from src.pom.page_left_nav import LeftNavPage, LeftNavData
+from src.pom.page_modal import ModalPage, ModalLocators
+from src.pom.page_tasks import TasksDataClass, TasksPage
 from src.utils.get_test_data import get_test_data
 
 
@@ -23,7 +23,7 @@ class TestTasks:
         self.left_nav.go_to_tab(LeftNavData.TASK)
 
     @allure.title("Dodanie zadania")
-    @allure.link("https://github.com/dawidkarwan/aTests/wiki/1.-Dodanie-nowego-zadania")
+    @allure.testcase("https://github.com/dawidkarwan/aTests/wiki/1.-Dodanie-nowego-zadania")
     @pytest.mark.parametrize('params', get_test_data('tasks', TasksDataClass))
     def test_add_task(self, params: TasksDataClass):
         self.tasks.add_new_task(params)

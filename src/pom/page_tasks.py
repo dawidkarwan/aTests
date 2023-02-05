@@ -4,7 +4,7 @@ import allure
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from src.commons.page_base import BasePage
+from src.pom.commons.page_base import BasePage
 
 
 class TasksLocators:

@@ -1,7 +1,7 @@
 import allure
 from selenium.webdriver.common.by import By
 
-from src.commons.page_base import BasePage
+from src.pom.commons.page_base import BasePage
 
 
 class ModalLocators:

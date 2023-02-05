@@ -2,7 +2,7 @@ import allure
 import pytest
 from assertpy import assert_that
 
-from src.page_header import HeaderPage
+from src.pom.page_header import HeaderPage
 
 
 @pytest.mark.common

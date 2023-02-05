@@ -1,7 +1,7 @@
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 
-from src.commons.common_actions import CommonActions
+from src.pom.commons.common_actions import CommonActions
 
 
 class BasePage:

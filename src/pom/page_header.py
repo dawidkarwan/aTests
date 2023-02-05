@@ -2,12 +2,13 @@ import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
-from src.commons.page_base import BasePage
+from src.pom.commons.page_base import BasePage
 
 
 class HeaderLocators:
     ACTIVE_PROJECT = (By.XPATH, '//div[@id="activeProject_chosen"]//span')
     INPUT_PROJECT = (By.XPATH, '//div[@id="activeProject_chosen"]//input')
+    LABEL_USER = (By.XPATH, "//*[@class='user-info']")
 
     @staticmethod
     def chose_project(project: str) -> tuple[str, str]:
