@@ -1,11 +1,11 @@
 import allure
-from selenium.webdriver.common.by import By
 
 from src.pom.commons.page_base import BasePage
+from src.utils.locator import LoCreator
 
 
 class ModalLocators:
-    INFO_MSG = (By.XPATH, '//div[@id="j_info_box"]//p')
+    INFO_MSG = LoCreator.xpath('//div[@id="j_info_box"]//p')
 
 
 class ModalPage(BasePage):

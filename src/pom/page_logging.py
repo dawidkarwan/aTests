@@ -1,14 +1,15 @@
 from dataclasses import dataclass
 
 import allure
-from selenium.webdriver.common.by import By
+
 from src.pom.commons.page_base import BasePage
+from src.utils.locator import LoCreator
 
 
 class LoggingLocators:
-    INPUT_LOGIN = (By.ID, "email")
-    INPUT_PASSWORD = (By.ID, "password")
-    BUTTON_LOGIN = (By.ID, "login")
+    INPUT_LOGIN = LoCreator.id("email")
+    INPUT_PASSWORD = LoCreator.id("password")
+    BUTTON_LOGIN = LoCreator.id("login")
 
 
 @dataclass
