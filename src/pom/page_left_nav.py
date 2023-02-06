@@ -1,16 +1,16 @@
 import allure
-from selenium.webdriver.common.by import By
 
 from src.pom.commons.page_base import BasePage
+from src.utils.locator import LoCreator, Locator
 from src.utils.str_enum import StrEnum
 
 
 class LeftNavLocators:
-    MAIN_PAGE = (By.ID, "header_logo")
+    MAIN_PAGE = LoCreator.id("header_logo")
 
     @staticmethod
-    def get_tab_locator(name: str) -> tuple:
-        return By.XPATH, f'//ul[@class="menu"]//a[text()="{name}"]'
+    def get_tab_locator(name: str) -> Locator:
+        return LoCreator.xpath(f'//ul[@class="menu"]//a[text()="{name}"]')
 
 
 class LeftNavData(StrEnum):

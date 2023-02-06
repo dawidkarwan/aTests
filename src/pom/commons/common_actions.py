@@ -1,12 +1,13 @@
 from selenium.webdriver.chrome.webdriver import WebDriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
+from src.utils.locator import LoCreator
 
 
 class CommonLocators:
-    DDL = (By.XPATH, '//div[@class="token-input-dropdown-facebook"]//li')
-    TITLE = (By.XPATH, '//h1[@class="content_title"]')
+    DDL = LoCreator.xpath('//div[@class="token-input-dropdown-facebook"]//li')
+    TITLE = LoCreator.xpath('//h1[@class="content_title"]')
 
 
 class CommonActions:

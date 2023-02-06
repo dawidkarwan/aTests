@@ -1,18 +1,18 @@
 import allure
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
 from src.pom.commons.page_base import BasePage
+from src.utils.locator import LoCreator, Locator
 
 
 class HeaderLocators:
-    ACTIVE_PROJECT = (By.XPATH, '//div[@id="activeProject_chosen"]//span')
-    INPUT_PROJECT = (By.XPATH, '//div[@id="activeProject_chosen"]//input')
-    LABEL_USER = (By.XPATH, "//*[@class='user-info']")
+    ACTIVE_PROJECT = LoCreator.xpath('//div[@id="activeProject_chosen"]//span')
+    INPUT_PROJECT = LoCreator.xpath('//div[@id="activeProject_chosen"]//input')
+    LABEL_USER = LoCreator.xpath("//*[@class='user-info']")
 
     @staticmethod
-    def chose_project(project: str) -> tuple[str, str]:
-        return By.XPATH, f'//div[@id="activeProject_chosen"]//li[text()="{project}"]'
+    def chose_project(project: str) -> Locator:
+        return LoCreator.xpath(f'//div[@id="activeProject_chosen"]//li[text()="{project}"]')
 
 
 class HeaderPage(BasePage):

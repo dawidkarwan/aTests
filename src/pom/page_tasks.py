@@ -2,32 +2,33 @@ from dataclasses import dataclass
 
 import allure
 from selenium.webdriver import Keys
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+
 from src.pom.commons.page_base import BasePage
+from src.utils.locator import LoCreator, Locator
 
 
 class TasksLocators:
-    BUTTON_ADD_TASK = (By.XPATH, '//a[@class="button_link"][text()="Dodaj zadanie"]')
-    INPUT_TITLE = (By.ID, 'title')
-    INPUT_DESCRIPTION = (By.ID, 'description')
-    INPUT_ENV = (By.ID, 'token-input-environments')
-    INPUT_VERSION = (By.ID, 'token-input-versions')
-    INPUT_DUE_DATE = (By.ID, 'dueDate')
-    INPUT_ASSIGNEE_TO = (By.ID, 'assigneeName')
-    DDL_ASSIGNEE_TO = (By.XPATH, '//a[@class="ui-corner-all"][contains(text(),"Gall Anonim")]')
-    INPUT_TAG = (By.ID, 'token-input-tags')
-    BUTTON_SAVE = (By.ID, 'save')
-    DDL_PRIORITY = (By.ID, 'priority')
-    BUTTON_CANCEL = (By.XPATH, '//span[@class="j_cancel_button"]//a[text()="Anuluj"]')
+    BUTTON_ADD_TASK = LoCreator.xpath('//a[@class="button_link"][text()="Dodaj zadanie"]')
+    INPUT_TITLE = LoCreator.id('title')
+    INPUT_DESCRIPTION = LoCreator.id('description')
+    INPUT_ENV = LoCreator.id('token-input-environments')
+    INPUT_VERSION = LoCreator.id('token-input-versions')
+    INPUT_DUE_DATE = LoCreator.id('dueDate')
+    INPUT_ASSIGNEE_TO = LoCreator.id('assigneeName')
+    DDL_ASSIGNEE_TO = LoCreator.xpath('//a[@class="ui-corner-all"][contains(text(),"Gall Anonim")]')
+    INPUT_TAG = LoCreator.id('token-input-tags')
+    BUTTON_SAVE = LoCreator.id('save')
+    DDL_PRIORITY = LoCreator.id('priority')
+    BUTTON_CANCEL = LoCreator.xpath('//span[@class="j_cancel_button"]//a[text()="Anuluj"]')
 
     @staticmethod
-    def priority_option(priority: str) -> tuple[str, str]:
-        return By.XPATH, f'//select[@id="priority"]/option[.="{priority}"]'
+    def priority_option(priority: str) -> Locator:
+        return LoCreator.xpath(f'//select[@id="priority"]/option[.="{priority}"]')
 
     @staticmethod
-    def dynamic_ddl(value: str) -> tuple[str, str]:
-        return By.XPATH, f'//div[@class="token-input-dropdown-facebook"]//li[.="{value}"]'
+    def dynamic_ddl(value: str) -> Locator:
+        return LoCreator.xpath(f'//div[@class="token-input-dropdown-facebook"]//li[.="{value}"]')
 
 
 @dataclass
